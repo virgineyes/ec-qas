@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ec-auth-config
+  namespace: ec-qas
+data:
+  TZ: 'Asia/Taipei'
+  ALLOWED_ORIGINS: '*'
+  SWAGGER_ENABLED: 'true'
+  SWAGGER_HOSTNAME: 'ec-qas.deltaww.com/api/auth'
+  YM_CALL_FUNC_VIA_PI_URL: 'http://twtpepgbqa1.delta.corp:56800/XISOAPAdapter/MessageServlet?senderParty=EC&senderService=BC_EC&receiverParty=&receiverService=&interface=SOS_YM_CALL_FUNC_VIA_PI&interfaceNamespace=http://deltaww.com/xi/ec/YM_CALL_FUNC_VIA_PI'
+  YEC_INSERT_DELETE_YECACCOUNT_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_INSERT_DELETE_YECACCOUNT'
+  ELASTIC_APM_SERVICE_NAME: ec-auth
+  OLDEC_LOGIN_URL: 'http://webecd.deltaww.com/ezECWeb/LoginDispatch'
+  DELTA_JOB_URL: 'https://itsch-stg.deltaww.com/api/sch'

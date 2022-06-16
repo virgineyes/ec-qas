@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ec-quotation-config
+  namespace: ec-qas
+data:
+  TZ: 'Asia/Taipei'
+  ALLOWED_ORIGINS: '*'
+  SWAGGER_ENABLED: 'true'
+  SWAGGER_HOSTNAME: 'ec-qas.deltaww.com/api/quotation'
+  ELASTIC_APM_SERVICE_NAME: ec-quotation
+  YM_CALL_FUNC_VIA_PI_URL: 'http://twtpepgbqa1.delta.corp:56800/XISOAPAdapter/MessageServlet?senderParty=EC&senderService=BC_EC&receiverParty=&receiverService=&interface=SOS_YM_CALL_FUNC_VIA_PI&interfaceNamespace=http://deltaww.com/xi/ec/YM_CALL_FUNC_VIA_PI'
+  YEC_INSERT_DELETE_YECACCOUNT_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_INSERT_DELETE_YECACCOUNT'
+  YEC_QUERY_RFQ_NO_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_QUERY_RFQ_NO'
+  YEC_UPDATE_RFQ_NO_STATUS_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_UPDATE_RFQ_NO_STATUS'
+  YEC_MAINTAIN_QUOTATION_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_MAINTAIN_QUOTATION'
+  YEC_QUERY_LASTPRICE_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_QUERY_LASTPRICE'
+  YEC_DELETE_QUOTATION_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_DELETE_QUOTATION'
+  YEC_MASS_MAINTAIN_PRICE_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_MASS_MAINTAIN_PRICE'
+  YP_QUERY_DOCUMENT_VERSION_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YP_QUERY_DOCUMENT_VERSION'
+  YEC_READ_EXCHANGE_RATE_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_READ_EXCHANGE_RATE'
+  PRICE_CENTER_SPLIT_PERIOD_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/Y_PRICE_CENTER_SPLIT_PERIOD'
+  DELTA_TOOLING_CONTAINER_CODE: 'LOCAL_TOOLING'
+  TOOLING_REQUOTE_URL: 'https://tooling-qas.deltaww.com/api/sys/quotation/requote'
+  TOOLING_CONFIRM_URL: 'https://tooling-qas.deltaww.com/api/sys/quotation/confirm'
+  TOOLING_CLIENT_ID: 'e6da3558-696c-49ab-bbb5-9b862cfc7183'
+  TOOLING_CLIENT_SECRET: 'Qu2yV3YFXpf51WMKxExD1Q=='
+  EC_DOWNLOADFILE_URL: 'https://ec-qas.deltaww.com/api/file/attachment/download/{uuid}'
+  PI_USERNAME: 'EC_User'
+  PI_PHRASE: 'Delta123'
+  PLM_RFQ_DOCUMENT_DOWNLOAD_URL: 'https://plm.deltaww.com/Windchill/netmarkets/jsp/ext/delta/edm/'
+  FTP_RFQ_DOCUMENT_DOWNLOAD_URL: 'twtpeplmdb0'

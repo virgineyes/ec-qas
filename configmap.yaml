@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ec-common-config
+  namespace: ec-qas
+data:
+  TZ: 'Asia/Taipei'
+  ALLOWED_ORIGINS: '*'
+  DATABASE_URL: 'jdbc:oracle:thin:@//TWTPEIHODV1.delta.corp:1521/QA1'
+  DATABASE_USERNAME: 'EC'
+  DATABASE_PASSWORD: 'EC0127'
+  DATABASE_DRIVER_CLASS_NAME: 'oracle.jdbc.OracleDriver'  
+  DATABASE_HIBERNATE_DIALECT: 'org.hibernate.dialect.Oracle12cDialect'
+  OLDEC_DATABASE_URL: 'jdbc:oracle:thin:@//TWTPEIHODV1.delta.corp:1521/QA1'
+  OLDEC_DATABASE_USERNAME: 'Delta2'
+  OLDEC_DATABASE_PASSWORD: 'DELTA2'
+  OLDEC_DATABASE_DRIVER_CLASS_NAME: 'oracle.jdbc.OracleDriver'  
+  OLDEC_DATABASE_HIBERNATE_DIALECT: 'org.hibernate.dialect.Oracle12cDialect'
+  DELTA_AUTH_ISSUER: 'authnz-qas.deltaww.com'
+  DELTA_AUTH_URL: 'http://it-apim-stg.deltaww.com/gw/authnz-qas/'
+  DELTA_AUTH_URL_CURRENT_USER: 'http://it-apim-stg.deltaww.com/gw/authnz-qas/delta-user/current-user?api-key=d6b79a63-cd5c-474f-a8b3-fa28d7609e76'
+  SYNCERP_DATABASE_URL: 'jdbc:sqlserver://twtpesqlqa2.delta.corp;database=SYNCERP'
+  SYNCERP_DATABASE_USERNAME: 'EC'
+  SYNCERP_DATABASE_PASSWORD: 'EC2021'
+  SYNCERP_DATABASE_DRIVER_CLASS_NAME: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'  
+  SYNCERP_DATABASE_HIBERNATE_DIALECT: 'org.hibernate.dialect.SQLServer2012Dialect'  
+  MAIL_SERVICE_URL: 'http://it-apim-stg.deltaww.com/gw/mail/mail?api-key=bc81dfb0-a9ac-42bb-a160-a44ee4387bb7'
+  MAIL_SYSTEM: 'EProcurement'
+  MAIL_ACCOUNT: 'SRV-EC-AUTH@DELTAWW.COM'
+  PI_USERNAME: 'EC_User'
+  PI_PHRASE: 'Delta123'
+  YM_CALL_FUNC_VIA_PI_URL: 'http://twtpepgbqa1.delta.corp:56800/XISOAPAdapter/MessageServlet?senderParty=EC&senderService=BC_EC&receiverParty=&receiverService=&interface=SOS_YM_CALL_FUNC_VIA_PI&interfaceNamespace=http://deltaww.com/xi/ec/YM_CALL_FUNC_VIA_PI'
+  YEC_INSERT_DELETE_YECACCOUNT_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_INSERT_DELETE_YECACCOUNT'
+  EC_ENVIRONMENT: 'QAS'
+  EC_URL: 'https://ec-qas.deltaww.com'
+  # ELK
+  ELASTIC_APM_APPLICATION_PACKAGES: com.deltaww
+  # production,staging,development
+  ELASTIC_APM_ENVIRONMENT: QAS
+  ELASTIC_APM_SERVER_URLS: http://it-elk-stg.deltaww.com/apm/,https://it-elk-stg.deltaww.com/apm/
+  ELASTIC_APM_VERIFY_SERVER_CERT: 'false'
+  ELASTIC_APM_LOG_LEVEL: 'OFF'
+  ELASTIC_APM_ENABLE_LOG_CORRELATION: 'true'
+  DELTA_JOB_URL: 'https://itsch-stg.deltaww.com/api/sch'

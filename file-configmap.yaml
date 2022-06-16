@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ec-file-config
+  namespace: ec-qas
+data:
+  TZ: 'Asia/Taipei'
+  ALLOWED_ORIGINS: '*'
+  SWAGGER_ENABLED: 'true'
+  SWAGGER_HOSTNAME: 'ec-qas.deltaww.com/api/file'
+  ELASTIC_APM_SERVICE_NAME: ec-file

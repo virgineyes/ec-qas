@@ -1,0 +1,116 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ec-vendor-svc
+  namespace: ec-qas
+  labels:
+    application: ec-vendor
+    stage: qas
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/path: '/actuator/health'
+spec:
+  ports:
+    - name: "http"
+      port: 80
+      targetPort: 8080
+  selector:
+    application: ec-vendor
+    stage: qas
+status:
+  loadBalancer: {}
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ec-vendor-deploy
+  namespace: ec-qas
+  labels:
+    application: ec-vendor
+    stage: qas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      application: ec-vendor
+      stage: qas
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        application: ec-vendor
+        stage: qas
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: application
+                    operator: In
+                    values:
+                      - ec-vendor
+                  - key: stage
+                    operator: In
+                    values:
+                      - qas
+              # https://godleon.github.io/blog/Kubernetes/k8s-Assigning-Pod-to-Nodes/
+              # topologyKey 的設定用意在於，如果有多個 pod 需要分配，並指定了 topologyKey，
+              # 那 scheduler 在分配時就不可以(注意! 是不可以!)將多個 pod 放到帶有相同 value 的topologyKey(Label) 的 node 上
+              topologyKey: kubernetes.io/hostname
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: it.mdev.project/e-procurement
+                    operator: In
+                    values:
+                      - "yes"
+      tolerations:
+        - key: "it.mdev.project/e-procurement"
+          operator: "Equal"
+          value: "yes"
+          effect: "NoExecute"
+      imagePullSecrets:
+        - name: regcred
+        - name: sgmsaacr
+      containers:
+        - name: ec-vendor
+          image: it-docker.deltaww.com/ec-vendor:20220527-224656.ad8e3d8
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 500m
+              memory: 800Mi
+            limits:
+              cpu: 800m
+              memory: 1Gi
+          envFrom:
+            - configMapRef:
+                name: ec-common-config
+            - configMapRef:
+                name: ec-vendor-config
+          livenessProbe:  # 於運作階段檢測是否存活
+            httpGet:
+              path: /actuator/info
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            successThreshold: 1
+          readinessProbe:  # 於運作階段檢測是否可接受流量
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            successThreshold: 1
+      terminationGracePeriodSeconds: 10
+      restartPolicy: Always
+status: {}

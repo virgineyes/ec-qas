@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ec-frontend-config
+  namespace: ec-qas
+data:
+  TZ: 'Asia/Taipei'
+  DEBUG: 'false'  
+  BACKEND_URL: 'https://ec-qas.deltaww.com/api/'
+  FRONTEND_URL: 'https://ec-qas.deltaww.com'
+  AUTH_URL: 'https://authnz-qas.deltaww.com/'
+  AUTH_TOKEN_NAME: 'QAS-SSID'
+  IS_ON_EXTERNAL: 'F'

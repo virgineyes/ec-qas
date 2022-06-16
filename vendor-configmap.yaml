@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ec-vendor-config
+  namespace: ec-qas
+data:
+  TZ: 'Asia/Taipei'
+  ALLOWED_ORIGINS: '*'
+  SWAGGER_ENABLED: 'true'
+  SWAGGER_HOSTNAME: 'ec-qas.deltaww.com/api/vendor'
+  ELASTIC_APM_SERVICE_NAME: ec-vendor
