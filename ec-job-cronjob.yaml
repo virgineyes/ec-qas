@@ -1,0 +1,343 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: task-quotation-migration-cronjob
+  namespace: ec-qas
+spec:
+  # https://crontab.guru/
+  schedule: "0 0 1 * *"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+            - name: sgmsaacr
+          containers:
+            - name: simple
+              image: it-docker.deltaww.com/ec-job:20220615-203157.c0e54a5
+              imagePullPolicy: IfNotPresent
+              command:
+                - java
+                - -Djava.security.egd=file:/dev/./urandom
+                - -Dspring.profiles.active=production
+                - -XX:+UseParallelGC
+                - -Xms256m
+                - -Xmx512m
+                - -Xss1024K
+                - -jar
+                - app.jar
+                - --task=TASK_QUOTATION_MIGRATION
+                - --instanceId=YAML
+              envFrom:
+                - configMapRef:
+                    name: ec-common-config
+                - configMapRef:
+                    name: ec-job-config
+          restartPolicy: Never
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: task-group-account-vn-code-migration-cronjob
+  namespace: ec-qas
+spec:
+  # https://crontab.guru/
+  schedule: "0 0 1 * *"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+            - name: sgmsaacr
+          containers:
+            - name: simple
+              image: it-docker.deltaww.com/ec-job:20220615-203157.c0e54a5
+              imagePullPolicy: IfNotPresent
+              command:
+                - java
+                - -Djava.security.egd=file:/dev/./urandom
+                - -Dspring.profiles.active=production
+                - -XX:+UseParallelGC
+                - -Xms256m
+                - -Xmx512m
+                - -Xss1024K
+                - -jar
+                - app.jar
+                - --task=TASK_GROUP_ACCOUNT_VN_CODE_MIGRATION
+                - --instanceId=YAML
+              envFrom:
+                - configMapRef:
+                    name: ec-common-config
+                - configMapRef:
+                    name: ec-job-config
+          restartPolicy: Never
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: task-group-account-plant-migration-cronjob
+  namespace: ec-qas
+spec:
+  # https://crontab.guru/
+  schedule: "0 0 1 * *"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+            - name: sgmsaacr
+          containers:
+            - name: simple
+              image: it-docker.deltaww.com/ec-job:20220615-203157.c0e54a5
+              imagePullPolicy: IfNotPresent
+              command:
+                - java
+                - -Djava.security.egd=file:/dev/./urandom
+                - -Dspring.profiles.active=production
+                - -XX:+UseParallelGC
+                - -Xms256m
+                - -Xmx512m
+                - -Xss1024K
+                - -jar
+                - app.jar
+                - --task=TASK_GROUP_ACCOUNT_PLANT_MIGRATION
+                - --instanceId=YAML
+              envFrom:
+                - configMapRef:
+                    name: ec-common-config
+                - configMapRef:
+                    name: ec-job-config
+          restartPolicy: Never
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: task-group-account-qbr-commodity-migration-cronjob
+  namespace: ec-qas
+spec:
+  # https://crontab.guru/
+  schedule: "0 0 1 * *"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+            - name: sgmsaacr
+          containers:
+            - name: simple
+              image: it-docker.deltaww.com/ec-job:20220615-203157.c0e54a5
+              imagePullPolicy: IfNotPresent
+              command:
+                - java
+                - -Djava.security.egd=file:/dev/./urandom
+                - -Dspring.profiles.active=production
+                - -XX:+UseParallelGC
+                - -Xms256m
+                - -Xmx512m
+                - -Xss1024K
+                - -jar
+                - app.jar
+                - --task=TASK_GROUP_ACCOUNT_QBR_COMMODITY_MIGRATION
+                - --instanceId=YAML
+              envFrom:
+                - configMapRef:
+                    name: ec-common-config
+                - configMapRef:
+                    name: ec-job-config
+          restartPolicy: Never
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: task-group-account-qbr-vn-code-migration-cronjob
+  namespace: ec-qas
+spec:
+  # https://crontab.guru/
+  schedule: "0 0 1 * *"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+            - name: sgmsaacr
+          containers:
+            - name: simple
+              image: it-docker.deltaww.com/ec-job:20220615-203157.c0e54a5
+              imagePullPolicy: IfNotPresent
+              command:
+                - java
+                - -Djava.security.egd=file:/dev/./urandom
+                - -Dspring.profiles.active=production
+                - -XX:+UseParallelGC
+                - -Xms256m
+                - -Xmx512m
+                - -Xss1024K
+                - -jar
+                - app.jar
+                - --task=TASK_GROUP_ACCOUNT_QBR_VN_CODE_MIGRATION
+                - --instanceId=YAML
+              envFrom:
+                - configMapRef:
+                    name: ec-common-config
+                - configMapRef:
+                    name: ec-job-config
+          restartPolicy: Never
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: task-group-account-qbr-plant-migration-cronjob
+  namespace: ec-qas
+spec:
+  # https://crontab.guru/
+  schedule: "0 0 1 * *"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+            - name: sgmsaacr
+          containers:
+            - name: simple
+              image: it-docker.deltaww.com/ec-job:20220615-203157.c0e54a5
+              imagePullPolicy: IfNotPresent
+              command:
+                - java
+                - -Djava.security.egd=file:/dev/./urandom
+                - -Dspring.profiles.active=production
+                - -XX:+UseParallelGC
+                - -Xms256m
+                - -Xmx512m
+                - -Xss1024K
+                - -jar
+                - app.jar
+                - --task=TASK_GROUP_ACCOUNT_QBR_PLANT_MIGRATION
+                - --instanceId=YAML
+              envFrom:
+                - configMapRef:
+                    name: ec-common-config
+                - configMapRef:
+                    name: ec-job-config
+          restartPolicy: Never
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: task-group-account-pi-code-migration-cronjob
+  namespace: ec-qas
+spec:
+  # https://crontab.guru/
+  schedule: "0 0 1 * *"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+            - name: sgmsaacr
+          containers:
+            - name: simple
+              image: it-docker.deltaww.com/ec-job:20220615-203157.c0e54a5
+              imagePullPolicy: IfNotPresent
+              command:
+                - java
+                - -Djava.security.egd=file:/dev/./urandom
+                - -Dspring.profiles.active=production
+                - -XX:+UseParallelGC
+                - -Xms256m
+                - -Xmx512m
+                - -Xss1024K
+                - -jar
+                - app.jar
+                - --task=TASK_GROUP_ACCOUNT_PI_CODE_MIGRATION
+                - --instanceId=YAML
+              envFrom:
+                - configMapRef:
+                    name: ec-common-config
+                - configMapRef:
+                    name: ec-job-config
+          restartPolicy: Never
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: task-group-account-contact-migration-cronjob
+  namespace: ec-qas
+spec:
+  # https://crontab.guru/
+  schedule: "0 0 1 * *"
+  suspend: true
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: regcred
+            - name: sgmsaacr
+          containers:
+            - name: simple
+              image: it-docker.deltaww.com/ec-job:20220615-203157.c0e54a5
+              imagePullPolicy: IfNotPresent
+              command:
+                - java
+                - -Djava.security.egd=file:/dev/./urandom
+                - -Dspring.profiles.active=production
+                - -XX:+UseParallelGC
+                - -Xms256m
+                - -Xmx512m
+                - -Xss1024K
+                - -jar
+                - app.jar
+                - --task=TASK_GROUP_ACCOUNT_CONTACT_MIGRATION
+                - --instanceId=YAML
+              envFrom:
+                - configMapRef:
+                    name: ec-common-config
+                - configMapRef:
+                    name: ec-job-config
+          restartPolicy: Never
+---

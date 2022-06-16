@@ -41,4 +41,4 @@ data:
   ELASTIC_APM_VERIFY_SERVER_CERT: 'false'
   ELASTIC_APM_LOG_LEVEL: 'OFF'
   ELASTIC_APM_ENABLE_LOG_CORRELATION: 'true'
-  DELTA_JOB_URL: 'https://itsch-stg.deltaww.com/api/sch'
+  DELTA_JOB_URL: 'http://it-apim-stg.deltaww.com/gw/sch'

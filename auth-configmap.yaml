@@ -12,4 +12,3 @@ data:
   YEC_INSERT_DELETE_YECACCOUNT_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Quotation/YEC_INSERT_DELETE_YECACCOUNT'
   ELASTIC_APM_SERVICE_NAME: ec-auth
   OLDEC_LOGIN_URL: 'http://webecd.deltaww.com/ezECWeb/LoginDispatch'
-  DELTA_JOB_URL: 'https://itsch-stg.deltaww.com/api/sch'
