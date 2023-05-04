@@ -10,3 +10,6 @@ data:
   SWAGGER_HOSTNAME: 'ec-qas.deltaww.com/api/consignment'
   ELASTIC_APM_SERVICE_NAME: ec-consignment
   GET_VENDOR_GR_DATA_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Shipment/YEC_GET_EC_VENDOR_GR_DATA'
+  CONSIGN_STOCK_QUERY_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Consign/YEC_CONSIGN_STOCK_QUERY'
+  SUBCONTRACT_STOCK_QUERY_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Ordering/YEC_SUBCONTRACT_STOCK_QUERY1'
+  QUERY_CONSIGNMENT_AMOUNT_URL: 'http://twtpepgbqa1.delta.corp:56800/RESTAdapter/EC/Consign/YM_EC_QUERY_CONSIGNMENT_AMT'

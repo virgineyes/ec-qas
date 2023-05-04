@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: ec-job-config
-  namespace: ec-qas
-data:
-  TZ: 'Asia/Taipei'
-  ELASTIC_APM_SERVICE_NAME: ec-job

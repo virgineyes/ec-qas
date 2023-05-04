@@ -27,6 +27,7 @@ data:
   MAIL_SERVICE_URL: 'http://it-apim-stg.deltaww.com/gw/mail/mail?api-key=bc81dfb0-a9ac-42bb-a160-a44ee4387bb7'
   MAIL_SYSTEM: 'EProcurement'
   MAIL_ACCOUNT: 'SRV-EC-AUTH@DELTAWW.COM'
+  MAIL_DEBUG: 'true'
   PI_USERNAME: 'EC_User'
   PI_PHRASE: 'Delta123'
   YM_CALL_FUNC_VIA_PI_URL: 'http://twtpepgbqa1.delta.corp:56800/XISOAPAdapter/MessageServlet?senderParty=EC&senderService=BC_EC&receiverParty=&receiverService=&interface=SOS_YM_CALL_FUNC_VIA_PI&interfaceNamespace=http://deltaww.com/xi/ec/YM_CALL_FUNC_VIA_PI'

@@ -11,3 +11,5 @@ data:
   AUTH_URL: 'https://authnz-qas.deltaww.com/'
   AUTH_TOKEN_NAME: 'QAS-SSID'
   IS_ON_EXTERNAL: 'F'
+  FLORA_KEY: 'uXD2lE6E6D5C4G3C3kOPVe1f1d1Le1b1D1AWMSGSAFDTGHWsF4I4A11C8C2C5C3B1C3I3=='
+  OLD_EC_URL: 'http://webecd.deltaww.com/'
