@@ -85,7 +85,7 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-consignment
-          image: it-docker.deltaww.com/ec-consignment:20230724-170608.7ed38f9
+          image: it-docker.deltaww.com/ec-consignment:20230912-101314.dc21b45
           imagePullPolicy: IfNotPresent
           resources:
             # requests:
