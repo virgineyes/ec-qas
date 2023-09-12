@@ -83,15 +83,15 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-frontend
-          image: it-docker.deltaww.com/ec-frontend:20230502.072233-8fb0920
+          image: it-docker.deltaww.com/ec-frontend:20230726.084136-b149b4a
           imagePullPolicy: IfNotPresent
           resources:
      #       requests:
      #         cpu: 100m
      #         memory: 32Mi
-     #       limits:
-     #         cpu: 300m
-     #         memory: 64Mi
+          #  limits:
+          #    cpu: 300m
+          #    memory: 64Mi
           envFrom:
             - configMapRef:
                 name: ec-frontend-config

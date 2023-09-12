@@ -86,12 +86,12 @@ spec:
           image: it-docker.deltaww.com/ec-vendor:20230420-134349.8fb0920
           imagePullPolicy: IfNotPresent
           resources:
-            requests:
+            # requests:
    #           cpu: 500m
    #           memory: 1.5Gi
-   #         limits:
-   #           cpu: 500m
-   #           memory: 1.5Gi
+          #  limits:
+          #    cpu: 500m
+          #    memory: 1.5Gi
           envFrom:
             - configMapRef:
                 name: ec-common-config

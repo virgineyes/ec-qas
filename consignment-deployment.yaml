@@ -85,15 +85,15 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-consignment
-          image: it-docker.deltaww.com/ec-consignment:20230322-141150.cc7b8ca
+          image: it-docker.deltaww.com/ec-consignment:20230724-170608.7ed38f9
           imagePullPolicy: IfNotPresent
           resources:
-            requests:
+            # requests:
      #         cpu: 500m
      #         memory: 1Gi
-     #       limits:
-     #         cpu: 500m
-     #         memory: 1Gi
+          #  limits:
+          #    cpu: 500m
+          #    memory: 1Gi
           envFrom:
             - configMapRef:
                 name: ec-common-config

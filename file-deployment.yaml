@@ -91,9 +91,9 @@ spec:
      #       requests:
      #         cpu: 500m
      #         memory: 1Gi
-     #       limits:
-     #         cpu: 500m
-     #         memory: 1Gi
+          #  limits:
+          #    cpu: 500m
+          #    memory: 1Gi
           envFrom:
             - configMapRef:
                 name: ec-common-config

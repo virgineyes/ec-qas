@@ -83,15 +83,15 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-quotation
-          image: it-docker.deltaww.com/ec-quotation:20230420-134349.8fb0920
+          image: it-docker.deltaww.com/ec-quotation:20230720-161153.6e81bae
           imagePullPolicy: IfNotPresent
           resources:
             # requests:
      #         cpu: 500m
      #         memory: 1.5Gi
-     #       limits:
-     #         cpu: 500m
-     #         memory: 1.5Gi
+          #  limits:
+          #    cpu: 500m
+          #    memory: 1.5Gi
           envFrom:
             - configMapRef:
                 name: ec-common-config
@@ -180,9 +180,9 @@ data:
     setup.ilm.enabled: false
 
     # setup filebeat to send output to elasticsearch
-    # output.elasticsearch:
-    #  enabled: true
-    #  hosts: ["http://it-elk-stg.deltaww.com:80"]
-    output.logstash:
+    output.elasticsearch:
       enabled: true
-      hosts: ["10.136.218.31:2060"]
+      hosts: ["http://it-elk-stg.deltaww.com:80"]
+    # output.logstash:
+    #  enabled: true
+    #  hosts: ["10.136.218.31:2060"]

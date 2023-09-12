@@ -85,15 +85,15 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-auth
-          image: it-docker.deltaww.com/ec-auth:20230420-134349.8fb0920
+          image: it-docker.deltaww.com/ec-auth:20230522-120541.672367d
           imagePullPolicy: IfNotPresent
           resources:
     #        requests:
     #          cpu: 500m
     #          memory: 1Mi
-    #        limits:
-    #          cpu: 500m
-    #          memory: 1Gi
+          #  limits:
+          #    cpu: 500m
+          #    memory: 1Gi
           envFrom:
             - configMapRef:
                 name: ec-common-config
