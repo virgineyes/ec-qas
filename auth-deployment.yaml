@@ -85,7 +85,7 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-auth
-          image: it-docker.deltaww.com/ec-auth:20230522-120541.672367d
+          image: it-docker.deltaww.com/ec-auth:20231106-170046.5e42c23
           imagePullPolicy: IfNotPresent
           resources:
     #        requests:
