@@ -83,7 +83,7 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-quotation
-          image: it-docker.deltaww.com/ec-quotation:20231115-105056.44b05dd
+          image: it-docker.deltaww.com/ec-quotation:20231219-111517.8d53d59
           imagePullPolicy: IfNotPresent
           resources:
             # requests:

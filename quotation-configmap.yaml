@@ -31,3 +31,4 @@ data:
   PLM_RFQ_DOCUMENT_DOWNLOAD_URL: 'https://plm.deltaww.com/Windchill/netmarkets/jsp/ext/delta/edm/'
   FTP_RFQ_DOCUMENT_DOWNLOAD_URL: 'twtpeplmdb0'
   CRON_TOOLING_BATCH_VALUE: '0 0/2 * * * *'
+  CRON_RFQ_BATCH_VALUE: '0 0/5 * * * *'
