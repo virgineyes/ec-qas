@@ -83,7 +83,7 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-frontend
-          image: it-docker.deltaww.com/ec-frontend:20231120.085655-2f098b2
+          image: it-docker.deltaww.com/ec-frontend:20240103.072838-4b0043a
           imagePullPolicy: IfNotPresent
           resources:
      #       requests:
