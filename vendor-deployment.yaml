@@ -83,7 +83,7 @@ spec:
         - name: sgmsaacr
       containers:
         - name: ec-vendor
-          image: it-docker.deltaww.com/ec-vendor:20230420-134349.8fb0920
+          image: it-docker.deltaww.com/ec-vendor:20240131-144057.9ba7f0b
           imagePullPolicy: IfNotPresent
           resources:
             # requests:
