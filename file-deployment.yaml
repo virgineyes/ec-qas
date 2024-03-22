@@ -88,12 +88,12 @@ spec:
           image: it-docker.deltaww.com/ec-file:20230410-134109.05c6fd4
           imagePullPolicy: IfNotPresent
           resources:
-     #       requests:
-     #         cpu: 500m
-     #         memory: 1Gi
-          #  limits:
-          #    cpu: 500m
-          #    memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 500Mi
+            limits:
+              cpu: 500m
+              memory: 1500Mi
           envFrom:
             - configMapRef:
                 name: ec-common-config
@@ -116,31 +116,31 @@ spec:
           volumeMounts:
           - name: varlog
             mountPath: /var/log
-        - name: filebeat-dynamic
-          image: it-docker.deltaww.com/docker.elastic.co/beats/filebeat:7.6.1
-          imagePullPolicy: Always
-          args: [
-            "-c", "/etc/filebeat.yml",
-            "-e",
-          ]
-          env:
-            - name: POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-            - name: POD_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-          securityContext:
-            runAsUser: 0
-          volumeMounts:
-          - name: config
-            mountPath: /etc/filebeat.yml
-            readOnly: true
-            subPath: filebeat.yml
-          - name: varlog
-            mountPath: /var/log
+        # - name: filebeat-dynamic
+        #   image: it-docker.deltaww.com/docker.elastic.co/beats/filebeat:7.6.1
+        #   imagePullPolicy: Always
+        #   args: [
+        #     "-c", "/etc/filebeat.yml",
+        #     "-e",
+        #   ]
+        #   env:
+        #     - name: POD_NAME
+        #       valueFrom:
+        #         fieldRef:
+        #           fieldPath: metadata.name
+        #     - name: POD_NAMESPACE
+        #       valueFrom:
+        #         fieldRef:
+        #           fieldPath: metadata.namespace
+        #   securityContext:
+        #     runAsUser: 0
+        #   volumeMounts:
+        #   - name: config
+        #     mountPath: /etc/filebeat.yml
+        #     readOnly: true
+        #     subPath: filebeat.yml
+        #   - name: varlog
+        #     mountPath: /var/log
       terminationGracePeriodSeconds: 10
       restartPolicy: Always
       volumes:
@@ -153,38 +153,38 @@ spec:
 status: {}
 ---
 
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: filebeat-dynamic-config
-  namespace: ec-qas
-data:
-  filebeat.yml: |-
-    filebeat.inputs:
-    - type: log
-      enabled: true
-      paths:
-        - /var/log/*.log
-    processors:
-    - add_fields:
-        target: kubernetes
-        fields:
-          pod.name: ${POD_NAME}
-          namespace: ${POD_NAMESPACE}
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: filebeat-dynamic-config
+#   namespace: ec-qas
+# data:
+#   filebeat.yml: |-
+#     filebeat.inputs:
+#     - type: log
+#       enabled: true
+#       paths:
+#         - /var/log/*.log
+#     processors:
+#     - add_fields:
+#         target: kubernetes
+#         fields:
+#           pod.name: ${POD_NAME}
+#           namespace: ${POD_NAMESPACE}
 
-    #filebeat.publish_async: true
-    #ignore_older: 12h
+#     #filebeat.publish_async: true
+#     #ignore_older: 12h
 
-    filebeat.config.modules:
-      path: ${path.config}/modules.d/*.yml
-      reload.enabled: false
+#     filebeat.config.modules:
+#       path: ${path.config}/modules.d/*.yml
+#       reload.enabled: false
 
-    setup.ilm.enabled: false
+#     setup.ilm.enabled: false
 
-    # setup filebeat to send output to elasticsearch
-    output.elasticsearch:
-      enabled: true
-      hosts: ["http://it-elk-stg.deltaww.com:80"]
-    # output.logstash:
-    #  enabled: true
-    #  hosts: ["10.136.218.31:2060"]
+#     # setup filebeat to send output to elasticsearch
+#     output.elasticsearch:
+#       enabled: true
+#       hosts: ["http://it-elk-stg.deltaww.com:80"]
+#     # output.logstash:
+#     #  enabled: true
+#     #  hosts: ["10.136.218.31:2060"]

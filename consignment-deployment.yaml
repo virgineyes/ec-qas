@@ -88,12 +88,12 @@ spec:
           image: it-docker.deltaww.com/ec-consignment:20230912-153703.c1a4196
           imagePullPolicy: IfNotPresent
           resources:
-            # requests:
-     #         cpu: 500m
-     #         memory: 1Gi
-          #  limits:
-          #    cpu: 500m
-          #    memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 500Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
           envFrom:
             - configMapRef:
                 name: ec-common-config
